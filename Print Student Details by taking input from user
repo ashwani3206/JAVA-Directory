@@ -1,0 +1,20 @@
+package myjavaprojects;
+
+import java.util.Scanner;
+
+public class studentdetails {
+public static void main(String[] args)
+{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter name , Course , University Roll Number & Sem");
+	String name= sc.nextLine();
+	String course= sc.nextLine();
+	int roll=sc.nextInt();
+	int sem=sc.nextInt();
+	System.out.println("Name: "+name);
+	System.out.println("Course: "+course);
+	System.out.println("University roll number: "+roll);
+	System.out.println("Semester: "+sem);
+	
+}
+}
