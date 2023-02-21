@@ -1,0 +1,52 @@
+//Rate of Interest
+package myjavaprojects;
+
+import java.util.Scanner;
+
+public class task2p2 {
+	
+	public static void main(String a[]) {
+
+        int number1 = 0, number2 = 0, option = 0, example= 0;
+        while (true) {
+            {
+                Scanner sc = new Scanner(System.in);
+                // Asking the user to enter the choice
+                System.out.println("Input your choice from the following menu:");
+                System.out.println("1.Term Deposit 2.Recurring Deposit");
+                option = sc.nextInt();
+                switch (option) {
+                case 1:           
+                    System.out.println("Enter the principal amount");
+                    int p=sc.nextInt();
+                    System.out.println("Enter the rate of interest");
+                    int r=sc.nextInt();
+                    System.out.println("Enter the time period");
+                    int t=sc.nextInt();
+                    double amt;
+                    amt=p*Math.pow((1+r)/100,t);
+                    System.out.println("The amount Calculated is:"+amt);
+                    break;
+                case 2:
+                	System.out.println("Enter the principal amount");
+                    int p1=sc.nextInt();
+                    System.out.println("Enter the rate of interest");
+                    int r1=sc.nextInt();
+                    System.out.println("Enter the time period in months");
+                    int t1=sc.nextInt();
+                    int amt2;
+                    amt2=p1*t1+(p1*t1*(t1+1)/2 * r1/100 * 1/12);
+                    System.out.println("The amount Calculated is:"+amt2);
+                    break;
+                   
+               default:
+            	   System.out.println("Wrong Choice");
+            	  
+                }
+            }
+        }
+	}
+}
+
+            
+               
