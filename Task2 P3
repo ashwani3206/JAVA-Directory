@@ -1,1 +1,46 @@
+package myjavaprojects;
+
+import java.util.Scanner;
+
+public class task2p3 {
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int n1,n2,s1=0,s2=0,num1,num2;
+		System.out.println("Enter First Number");
+		n1=sc.nextInt();
+		System.out.println("Enter Second Number");
+		n2=sc.nextInt();
+		num1 =n1;
+		num2 =n2;
+		
+		for(int i=1;i<n1;i++)
+		{
+			if(n1%i==0)
+			{
+				s1=s1+i;
+			}
+		}
+		System.out.println("Sum of divisors of first number:"+s1);
+		
+		for(int i=1;i<n2;i++)
+		{
+			if(n2%i==0)
+			{
+				s2=s2+i;
+				
+			}
+		}
+		
+		System.out.println("Sum of divisors of second number:"+s2);
+		if(s1==num1 && s2==num2)
+			System.out.println("Abundant numbers");
+		else
+			System.out.println("Not Abundant numbers");
+		
+		
+		
+	}
+}
 
