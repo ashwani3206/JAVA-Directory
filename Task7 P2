@@ -1,0 +1,27 @@
+abstract class Temperature {
+    protected double temp;
+
+    public void setTempData(double temp) {
+        this.temp = temp;
+    }
+
+    abstract void changeTemp();
+}
+
+class Fahrenheit extends Temperature {
+    private double ctemp;
+
+    @Override
+    void changeTemp() {
+        ctemp = 5.0 / 9.0 * (temp - 32.0);
+        System.out.println("Temperature in Celsius: " + ctemp + "°C");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Fahrenheit f = new Fahrenheit();
+        f.setTempData(98.6);
+        f.changeTemp();
+    }
+}
