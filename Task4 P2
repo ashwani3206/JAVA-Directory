@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class VowelDeleter {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+        
+        StringBuffer sb = new StringBuffer(input);
+        
+        for (int i = 0; i < sb.length(); i++) {
+            char ch = sb.charAt(i);
+            if (isVowel(ch)) {
+                sb.deleteCharAt(i);
+                i--; // Decrease the index to account for the removed character
+            }
+        }
+        
+        System.out.println("After deleting vowels: " + sb);
+    }
+    
+    public static boolean isVowel(char ch) {
+        ch = Character.toLowerCase(ch);
+        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u';
+    }
+
+}
