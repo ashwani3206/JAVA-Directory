@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+class Student {
+    private String name;
+    private int rollno;
+    private String dept;
+
+    // Parameterized constructor
+    public Student(String name, int rollno, String dept) {
+        this.name = name;
+        this.rollno = rollno;
+        this.dept = dept;
+    }
+
+    // Default constructor
+    public Student() {
+        this.name = "";
+        this.rollno = 0;
+        this.dept = "";
+    }
+
+    public void printData() {
+        System.out.println("Name: " + name);
+        System.out.println("Roll No: " + rollno);
+        System.out.println("Department: " + dept);
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the number of students: ");
+        int n = input.nextInt();
+
+        Student[] students = new Student[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter the details of student " + (i + 1) + ": ");
+            System.out.print("Name: ");
+            String name = input.next();
+            System.out.print("Roll No: ");
+            int rollno = input.nextInt();
+            System.out.print("Department: ");
+            String dept = input.next();
+
+            // Create the Student object using the parameterized constructor
+            students[i] = new Student(name, rollno, dept);
+        }
+
+        System.out.print("\nEnter the roll no to search: ");
+        int searchRollNo = input.nextInt();
+
+        boolean isRollNoPresent = false;
+
+        for (int i = 0; i < n; i++) {
+            if (students[i].rollno == searchRollNo) {
+                System.out.println("\nDetails of student with Roll No " + searchRollNo + " are:");
+                students[i].printData();
+                isRollNoPresent = true;
+                break;
+            }
+        }
+
+        if (!isRollNoPresent) {
+            System.out.println("\nRoll No " + searchRollNo + " not present.");
+        }
+
+        input.close();
+    }
+}
