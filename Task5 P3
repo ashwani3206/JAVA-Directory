@@ -1,0 +1,38 @@
+public class WordExample {
+    private String strdata;
+    
+    public WordExample(String sentence) {
+        strdata = sentence;
+    }
+    
+    public void countWord() {
+        int count = 0;
+        String[] words = strdata.split("\\s+");
+        for(String word : words) {
+            char firstChar = word.charAt(0);
+            char lastChar = word.charAt(word.length()-1);
+            if((firstChar == 'A' || firstChar == 'E' || firstChar == 'I' || firstChar == 'O' || firstChar == 'U')
+              && (lastChar == 'A' || lastChar == 'E' || lastChar == 'I' || lastChar == 'O' || lastChar == 'U')) {
+                count++;
+            }
+        }
+        System.out.println("Number of words beginning and ending with a vowel: " + count);
+    }
+    
+    public void placeWord() {
+        String[] words = strdata.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for(String word : words) {
+            char firstChar = word.charAt(0);
+            char lastChar = word.charAt(word.length()-1);
+            if((firstChar == 'A' || firstChar == 'E' || firstChar == 'I' || firstChar == 'O' || firstChar == 'U')
+              && (lastChar == 'A' || lastChar == 'E' || lastChar == 'I' || lastChar == 'O' || lastChar == 'U')) {
+                sb.insert(0, word + " ");
+            }
+            else {
+                sb.append(word + " ");
+            }
+        }
+        System.out.println("Modified sentence: " + sb.toString());
+    }
+}
