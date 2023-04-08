@@ -1,0 +1,35 @@
+To create and compile a Java program with a package from the command prompt, follow these steps:
+
+Create a folder for your package, and navigate into it:
+
+mkdir mypackage
+cd mypackage
+
+Create a Java source file for your program and package. For example, create a file named MyClass.java with the following code:
+
+package com.example.mypackage;
+
+public class MyClass {
+  public static void main(String[] args) {
+    System.out.println("Hello from my package!");
+  }
+}
+
+Note that the package declaration should match the folder structure: com/example/mypackage.
+
+Compile your Java program with the javac command. Use the -d option to specify the output directory for the compiled classes:
+
+javac -d . MyClass.java
+
+This will create a com/example/mypackage/MyClass.class file in the current directory.
+
+Run your Java program with the java command. Use the fully qualified name of the class to specify the package and class:
+
+java com.example.mypackage.MyClass
+
+This will output "Hello from my package!" to the console.
+
+Note: To successfully run the program, ensure that the current directory is the parent folder of the package folder.
+
+
+
