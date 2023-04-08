@@ -1,0 +1,48 @@
+// abstract base class
+abstract class Temperature {
+    double temp;
+
+    void setTempData(double temp) {
+        this.temp = temp;
+    }
+
+    abstract void changeTemp();
+}
+
+// subclass Fahrenheit
+class Fahrenheit extends Temperature {
+    double ctemp;
+
+    @Override
+    void changeTemp() {
+        ctemp = 5.0 / 9.0 * (temp - 32.0);
+        System.out.println("Fahrenheit temperature " + temp + " is equivalent to " + ctemp + " degree Celsius.");
+    }
+}
+
+// subclass Celsius
+class Celsius extends Temperature {
+    double ftemp;
+
+    @Override
+    void changeTemp() {
+        ftemp = 9.0 / 5.0 * temp + 32.0;
+        System.out.println("Celsius temperature " + temp + " is equivalent to " + ftemp + " degree Fahrenheit.");
+    }
+}
+
+// main class
+public class TemperatureConversion {
+    public static void main(String[] args) {
+        Fahrenheit f = new Fahrenheit();
+        Celsius c = new Celsius();
+
+        // convert Fahrenheit to Celsius
+        f.setTempData(98.6);
+        f.changeTemp();
+
+        // convert Celsius to Fahrenheit
+        c.setTempData(37.0);
+        c.changeTemp();
+    }
+}
