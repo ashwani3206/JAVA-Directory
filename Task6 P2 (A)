@@ -1,0 +1,52 @@
+class Vehicle {
+  protected String make;
+  protected String model;
+  protected int year;
+
+  public Vehicle(String make, String model, int year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+
+  public void display() {
+    System.out.println("Make: " + make);
+    System.out.println("Model: " + model);
+    System.out.println("Year: " + year);
+  }
+}
+
+class Car extends Vehicle {
+  protected int numDoors;
+
+  public Car(String make, String model, int year, int numDoors) {
+    super(make, model, year);
+    this.numDoors = numDoors;
+  }
+
+  public void display() {
+    super.display();
+    System.out.println("Number of doors: " + numDoors);
+  }
+}
+
+class SportsCar extends Car {
+  protected String transmission;
+
+  public SportsCar(String make, String model, int year, int numDoors, String transmission) {
+    super(make, model, year, numDoors);
+    this.transmission = transmission;
+  }
+
+  public void display() {
+    super.display();
+    System.out.println("Transmission: " + transmission);
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    SportsCar myCar = new SportsCar("Porsche", "911", 2021, 2, "manual");
+    myCar.display();
+  }
+}
