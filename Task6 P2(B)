@@ -1,0 +1,46 @@
+class Animal {
+  protected String species;
+
+  public Animal(String species) {
+    this.species = species;
+  }
+
+  public void speak() {
+    System.out.println("I am an animal.");
+  }
+}
+
+class Mammal extends Animal {
+  protected String hairColor;
+
+  public Mammal(String species, String hairColor) {
+    super(species);
+    this.hairColor = hairColor;
+  }
+
+  public void speak() {
+    System.out.println("I am a mammal.");
+  }
+}
+
+class Reptile extends Animal {
+  protected boolean isColdBlooded;
+
+  public Reptile(String species, boolean isColdBlooded) {
+    super(species);
+    this.isColdBlooded = isColdBlooded;
+  }
+
+  public void speak() {
+    System.out.println("I am a reptile.");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Mammal myMammal = new Mammal("Human", "Brown");
+    Reptile myReptile = new Reptile("Lizard", true);
+    myMammal.speak();
+    myReptile.speak();
+  }
+}
