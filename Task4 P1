@@ -1,0 +1,22 @@
+public class MutabilityDemo {
+
+    public static void main(String[] args) {
+        
+        // Example of immutability: String class
+        String s1 = "Hello";
+        String s2 = s1.concat(" World");
+        System.out.println("s1 = " + s1); // Output: s1 = Hello
+        System.out.println("s2 = " + s2); // Output: s2 = Hello World
+
+        // Example of mutability: StringBuilder class
+        StringBuilder sb1 = new StringBuilder("Java");
+        StringBuilder sb2 = sb1.append(" is awesome");
+        System.out.println("sb1 = " + sb1); // Output: sb1 = Java is awesome
+        System.out.println("sb2 = " + sb2); // Output: sb2 = Java is awesome
+
+        sb2.append("!");
+        System.out.println("sb1 = " + sb1); // Output: sb1 = Java is awesome!
+        System.out.println("sb2 = " + sb2); // Output: sb2 = Java is awesome!
+    }
+
+}
