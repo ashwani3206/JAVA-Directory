@@ -1,0 +1,72 @@
+class Person {
+    private String name;
+    private int age;
+
+    // default constructor
+    public Person() {
+        this("John Doe", 30); // calls the parameterized constructor with default values
+    }
+
+    // parameterized constructor with one argument
+    public Person(String name) {
+        this(name, 30); // calls the parameterized constructor with default age value
+    }
+
+    // parameterized constructor with two arguments
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // display method to print the values of the instance variables
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+class Employee extends Person {
+    private int id;
+    private double salary;
+
+    // default constructor
+    public Employee() {
+        this(1001, 50000); // calls the parameterized constructor with default values
+    }
+
+    // parameterized constructor with two arguments
+    public Employee(int id, double salary) {
+        super(); // calls the default constructor of the parent class
+        this.id = id;
+        this.salary = salary;
+    }
+
+    // display method to print the values of the instance variables
+    public void display() {
+        super.display(); // calls the display method of the parent class
+        System.out.println("ID: " + id);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+public class ConstructorDemo {
+    public static void main(String[] args) {
+        Person p1 = new Person(); // calls the default constructor
+        p1.display(); // prints the default values
+
+        System.out.println();
+
+        Person p2 = new Person("Jane Doe"); // calls the parameterized constructor with one argument
+        p2.display(); // prints the name and default age value
+
+        System.out.println();
+
+        Employee e1 = new Employee(); // calls the default constructor
+        e1.display(); // prints the default values
+
+        System.out.println();
+
+        Employee e2 = new Employee(1002, 60000); // calls the parameterized constructor with two arguments
+        e2.display(); // prints the values of all instance variables
+    }
+}
