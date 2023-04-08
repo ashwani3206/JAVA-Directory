@@ -1,0 +1,109 @@
+In Java, access protection levels can be applied to class members (fields, methods, and nested classes) using access modifiers. There are four access modifiers available in Java:
+
+private: accessible only within the same class
+default: accessible within the same package
+protected: accessible within the same package and in subclasses in any package
+public: accessible from anywhere
+When working with packages, access protection levels become even more important as they define the accessibility of classes and members from other packages.
+
+Here's an access protection table for incorporating packages in Java:
+
+
+Access level	Within class	Within package	Outside package by subclass only	Outside package
+private	Yes	No	No	No
+default	Yes	Yes	No	No
+protected	Yes	Yes	Yes	No
+public	Yes	Yes	Yes	Yes
+Now let's validate these scenarios with the help of a Java program:
+
+Scenario 1: Accessing a public class from another package
+
+
+//File: MyClass.java
+package com.example.mypackage;
+
+public class MyClass {
+   public void display() {
+      System.out.println("Hello, world!");
+   }
+}
+
+//File: AnotherClass.java
+package com.example.anotherpackage;
+
+import com.example.mypackage.MyClass;
+
+public class AnotherClass {
+   public static void main(String[] args) {
+      MyClass obj = new MyClass();
+      obj.display(); //Output: Hello, world!
+   }
+}
+
+
+In this scenario, we have a public class MyClass in package com.example.mypackage which is accessed from another package com.example.anotherpackage using import statement.
+
+Scenario 2: Accessing a default class from another package
+
+
+//File: MyClass.java
+package com.example.mypackage;
+
+class MyClass {
+   public void display() {
+      System.out.println("Hello, world!");
+   }
+}
+
+//File: AnotherClass.java
+package com.example.anotherpackage;
+
+import com.example.mypackage.MyClass;
+
+public class AnotherClass {
+   public static void main(String[] args) {
+      MyClass obj = new MyClass(); //Compilation error
+      obj.display();
+   }
+}
+
+
+In this scenario, we have a default class MyClass in package com.example.mypackage which is accessed from another package com.example.anotherpackage using import statement. However, since the class is not public, it cannot be accessed from outside the package and the program will fail to compile.
+
+Scenario 3: Accessing a protected member from another package by subclass only
+
+//File: MyClass.java
+package com.example.mypackage;
+
+public class MyClass {
+   protected void display() {
+      System.out.println("Hello, world!");
+   }
+}
+
+//File: AnotherClass.java
+package com.example.anotherpackage;
+
+import com.example.mypackage.MyClass;
+
+public class AnotherClass extends MyClass {
+   public static void main(String[] args) {
+      AnotherClass obj = new AnotherClass();
+      obj.display(); //Output: Hello, world!
+   }
+}
+
+In this scenario, we have a protected member display() in a public class MyClass in package com.example.mypackage. The member is accessed from another package com.example.anotherpackage using inheritance.
+
+Scenario 4: Accessing a private member from another class
+
+//File: MyClass.java
+package com.example.mypackage;
+
+public class MyClass {
+   private int num = 10;
+}
+
+//File: AnotherClass.java
+package com.example.anotherpackage;
+
