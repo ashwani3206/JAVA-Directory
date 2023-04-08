@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+// Define the interface
+interface Shape {
+    void displayVolume();
+}
+
+// Implement the interface in Cone class
+class Cone implements Shape {
+    double radius, height;
+    
+    Cone(double r, double h) {
+        radius = r;
+        height = h;
+    }
+    
+    public void displayVolume() {
+        double volume = (Math.PI * radius * radius * height) / 3.0;
+        System.out.println("Volume of cone: " + volume);
+    }
+}
+
+// Implement the interface in Hemisphere class
+class Hemisphere implements Shape {
+    double radius;
+    
+    Hemisphere(double r) {
+        radius = r;
+    }
+    
+    public void displayVolume() {
+        double volume = (2.0 * Math.PI * radius * radius * radius) / 3.0;
+        System.out.println("Volume of hemisphere: " + volume);
+    }
+}
+
+// Implement the interface in Cylinder class
+class Cylinder implements Shape {
+    double radius, height;
+    
+    Cylinder(double r, double h) {
+        radius = r;
+        height = h;
+    }
+    
+    public void displayVolume() {
+        double volume = Math.PI * radius * radius * height;
+        System.out.println("Volume of cylinder: " + volume);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Accept dimensions of cone
+        System.out.print("Enter radius of cone: ");
+        double coneRadius = sc.nextDouble();
+        System.out.print("Enter height of cone: ");
+        double coneHeight = sc.nextDouble();
+        Cone cone = new Cone(coneRadius, coneHeight);
+        
+        // Accept dimensions of hemisphere
+        System.out.print("Enter radius of hemisphere: ");
+        double hemiRadius = sc.nextDouble();
+        Hemisphere hemisphere = new Hemisphere(hemiRadius);
+        
+        // Accept dimensions of cylinder
+        System.out.print("Enter radius of cylinder: ");
+        double cylRadius = sc.nextDouble();
+        System.out.print("Enter height of cylinder: ");
+        double cylHeight = sc.nextDouble();
+        Cylinder cylinder = new Cylinder(cylRadius, cylHeight);
+        
+        // Display volumes
+        cone.displayVolume();
+        hemisphere.displayVolume();
+        cylinder.displayVolume();
+    }
+}
