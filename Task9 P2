@@ -1,0 +1,45 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class PalindromeCountExample {
+    public static void main(String[] args) {
+        String filePath = "myfile.txt";
+        int palindromeCount = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] words = line.split("\\s+"); // Split line into words
+
+                for (String word : words) {
+                    if (isPalindrome(word)) {
+                        palindromeCount++;
+                    }
+                }
+            }
+
+            System.out.println("Number of palindromes: " + palindromeCount);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static boolean isPalindrome(String word) {
+        // Remove non-alphanumeric characters and convert to lowercase
+        String cleanedWord = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        int left = 0;
+        int right = cleanedWord.length() - 1;
+
+        while (left < right) {
+            if (cleanedWord.charAt(left) != cleanedWord.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+}
+
