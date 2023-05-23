@@ -1,0 +1,49 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class AWTGUIExample {
+    private Frame frame;
+    private Label label;
+    private Button button;
+
+    public AWTGUIExample() {
+        // Create the frame
+        frame = new Frame("AWT GUI Example");
+
+        // Create the label
+        label = new Label("Hello, AWT!");
+
+        // Create the button
+        button = new Button("Click Me!");
+
+        // Add event listener to the button
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                label.setText("Button Clicked!");
+            }
+        });
+
+        // Set the layout of the frame
+        frame.setLayout(new FlowLayout());
+
+        // Add the label and button to the frame
+        frame.add(label);
+        frame.add(button);
+
+        // Set the size and visibility of the frame
+        frame.setSize(300, 200);
+        frame.setVisible(true);
+
+        // Add window listener to handle window close event
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        AWTGUIExample guiExample = new AWTGUIExample();
+    }
+}
+
