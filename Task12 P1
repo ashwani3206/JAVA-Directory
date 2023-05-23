@@ -1,0 +1,56 @@
+package myjavaprojects;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class task12p1 extends JFrame {
+    private JButton redButton, greenButton, blueButton;
+
+    public task12p1() {
+        setTitle("Color Change App");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        redButton = new JButton("RED");
+        greenButton = new JButton("GREEN");
+        blueButton = new JButton("BLUE");
+
+        redButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().setBackground(Color.RED);
+                redButton.setBackground(Color.RED);
+            }
+        });
+
+        greenButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().setBackground(Color.GREEN);
+                greenButton.setBackground(Color.GREEN);
+            }
+        });
+
+        blueButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                getContentPane().setBackground(Color.BLUE);
+                blueButton.setBackground(Color.BLUE);
+            }
+        });
+
+        setLayout(new FlowLayout());
+        add(redButton);
+        add(greenButton);
+        add(blueButton);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                task12p1 app = new task12p1();
+                app.setVisible(true);
+            }
+        });
+    }
+}
