@@ -1,0 +1,84 @@
+package myjavaprojects;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class task12p2 extends JFrame {
+    private JTextField inputField, countField;
+    private JButton countButton, resetButton, exitButton;
+
+    public task12p2() {
+        setTitle("Vowel Count App");
+        setSize(400, 150);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        inputField = new JTextField(20);
+        countField = new JTextField(10);
+        countField.setEditable(false);
+
+        countButton = new JButton("CountVowel");
+        resetButton = new JButton("Reset");
+        exitButton = new JButton("Exit");
+
+        countButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String input = inputField.getText().toLowerCase();
+                int vowelCount = countVowels(input);
+                countField.setText(Integer.toString(vowelCount));
+            }
+        });
+
+        resetButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                inputField.setText("");
+                countField.setText("");
+            }
+        });
+
+        exitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        panel.add(new JLabel("Enter a string: "));
+        panel.add(inputField);
+        panel.add(new JLabel("Vowel Count: "));
+        panel.add(countField);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout());
+        buttonPanel.add(countButton);
+        buttonPanel.add(resetButton);
+        buttonPanel.add(exitButton);
+
+        setLayout(new BorderLayout());
+        add(panel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    private int countVowels(String input) {
+        int count = 0;
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+            	task12p2 app = new task12p2();
+                app.setVisible(true);
+            }
+        });
+    }
+}
