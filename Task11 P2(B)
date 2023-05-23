@@ -1,0 +1,53 @@
+import java.awt.*;
+import java.awt.event.*;
+
+public class AWTGUIExample {
+    private Frame frame;
+    private Label nameLabel;
+    private TextField nameTextField;
+    private Button button;
+
+    public AWTGUIExample() {
+        // Create the frame
+        frame = new Frame("AWT GUI Example");
+
+        // Create the name label
+        nameLabel = new Label("Name:");
+
+        // Create the name text field
+        nameTextField = new TextField(20);
+
+        // Create the button
+        button = new Button("Click Me!");
+
+        // Add event listener to the button
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                nameTextField.setText("Graphic Era");
+            }
+        });
+
+        // Set the layout of the frame
+        frame.setLayout(new FlowLayout());
+
+        // Add the name label, name text field, and button to the frame
+        frame.add(nameLabel);
+        frame.add(nameTextField);
+        frame.add(button);
+
+        // Set the size and visibility of the frame
+        frame.setSize(300, 200);
+        frame.setVisible(true);
+
+        // Add window listener to handle window close event
+        frame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        AWTGUIExample guiExample = new AWTGUIExample();
+    }
+}
