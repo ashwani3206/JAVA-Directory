@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class EmployeeDetailsProgram {
+    public static void main(String[] args) {
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            // Accept employee details
+            System.out.print("Enter employee ID (between 2001 and 5001): ");
+            int employeeId = scanner.nextInt();
+            validateEmployeeId(employeeId);
+
+            scanner.nextLine(); // Consume the newline character
+
+            System.out.print("Enter employee name (first letter in capital): ");
+            String employeeName = scanner.nextLine();
+            validateEmployeeName(employeeName);
+
+            System.out.print("Enter department ID (between 1 and 5): ");
+            int departmentId = scanner.nextInt();
+            validateDepartmentId(departmentId);
+
+            // Print employee details
+            System.out.println("\nEmployee Details:");
+            System.out.println("ID: " + employeeId);
+            System.out.println("Name: " + employeeName);
+            System.out.println("Department ID: " + departmentId);
+
+            scanner.close();
+        } catch (Exception e) {
+            System.out.println("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    private static void validateEmployeeId(int employeeId) throws Exception {
+        if (employeeId < 2001 || employeeId > 5001) {
+            throw new Exception("Invalid employee ID. Employee ID should be between 2001 and 5001.");
+        }
+    }
+
+    private static void validateEmployeeName(String employeeName) throws Exception {
+        if (!Character.isUpperCase(employeeName.charAt(0))) {
+            throw new Exception("Invalid employee name. Name should start with a capital letter.");
+        }
+    }
+
+    private static void validateDepartmentId(int departmentId) throws Exception {
+        if (departmentId < 1 || departmentId > 5) {
+            throw new Exception("Invalid department ID. Department ID should be between 1 and 5.");
+        }
+    }
+}
