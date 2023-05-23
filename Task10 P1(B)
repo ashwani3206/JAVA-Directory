@@ -1,0 +1,36 @@
+class MyRunnable implements Runnable {
+    public void run() {
+        // Code to be executed in the thread
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Thread: " + i);
+            try {
+                Thread.sleep(1000); // Pause execution for 1 second
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class RunnableExample {
+    public static void main(String[] args) {
+        // Create an instance of MyRunnable
+        MyRunnable runnable = new MyRunnable();
+
+        // Create a Thread with the MyRunnable instance
+        Thread thread = new Thread(runnable);
+
+        // Start the thread
+        thread.start();
+
+        // Code in the main thread
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Main: " + i);
+            try {
+                Thread.sleep(1000); // Pause execution for 1 second
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
